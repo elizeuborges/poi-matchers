@@ -1,16 +1,16 @@
 package org.apache.poi.matchers;
 
-import org.apache.poi.matchers.Coordenada
-import org.apache.poi.matchers.ResolvedorDeCoordenada
+import org.apache.poi.matchers.Coordenada;
+import org.apache.poi.matchers.ResolvedorDeCoordenada;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.hamcrest.Description;
-import org.hamcrest.Matcher
+import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeDiagnosingMatcher;
 
-class WorkbookMatcher extends TypeSafeDiagnosingMatcher<Workbook> {
+public class WorkbookMatcher extends TypeSafeDiagnosingMatcher<Workbook> {
 
 	private Coordenada coordenada;
 	
@@ -23,17 +23,24 @@ class WorkbookMatcher extends TypeSafeDiagnosingMatcher<Workbook> {
 	}
 
 	private void garantaQueOMatcherEstaEmUmEstadoIntegro(){
-		if (!coordenada) {
-			throw new IllegalStateException('''
-			Matcher não finalizado corretamente. Você não informou a célula.
-			Exemplo de chamada válida:				
-				assertThat(worbook, possuiTexto("Algum texto").naCelula("A10"));''') 
+		if (coordenada == null) {
+			throw new IllegalStateException(
+			"Matcher não finalizado corretamente. Você não informou a célula."+
+			"Exemplo de chamada válida:"+
+			"	assertThat(worbook, possuiTexto(\"Algum texto\").naCelula(\"A10\"));"); 
 		}
 	}
 	
 	@Override
-	void describeTo(Description description) {
-		description.appendDescriptionOf(cellMatcher);
+	public void describeTo(Description description) {
+		description.appendDescriptionOf(cellMatcher)
+		.appendText(" na folha ")
+		.appendValue(sheetIndice)
+		.appendText(", linha ")
+		.appendValue(coordenada.getLinha())
+		.appendText(" e coluna ")
+		.appendValue(coordenada.getColuna())
+		;
 	}
 
 	@Override
@@ -49,9 +56,9 @@ class WorkbookMatcher extends TypeSafeDiagnosingMatcher<Workbook> {
 		}
 		Sheet sheet = workbook.getSheetAt(sheetIndice);
 		Cell cell = getCellDaCoordenada(sheet);
-		if (cell) {
+		if (cell != null) {
 			boolean matches = cellMatcher.matches(cell);
-			cellMatcher.describeMismatch(cell, mismatchDescription)
+			cellMatcher.describeMismatch(cell, mismatchDescription);
 			return matches;
 		}
 		mismatchDescription.appendText("uma planilha com a celula informada não criada");
@@ -61,23 +68,24 @@ class WorkbookMatcher extends TypeSafeDiagnosingMatcher<Workbook> {
 	private Cell getCellDaCoordenada(Sheet sheet) {
 		Row row = sheet.getRow(coordenada.getLinha());
 		Cell cell = null;
-		if (row) {
+		if (row != null) {
 			cell = row.getCell(coordenada.getColuna());
 		}
 		return cell;
 	}
 
-	WorkbookMatcher naCelula(String celula) {
+	public WorkbookMatcher naCelula(String celula) {
 		coordenada = ResolvedorDeCoordenada.resolver(celula);
 		return this;
 	}
 	
-	static WorkbookMatcher estaCom(Matcher<Cell> cellMatcher) {
+	public static WorkbookMatcher estaCom(Matcher<Cell> cellMatcher) {
 		return new WorkbookMatcher(cellMatcher);
 	}
 
-	static WorkbookMatcher estaCom(valorEsperado) {
-		return new WorkbookMatcher(new CellMatcher(valorEsperado, TiposBasicosExtrator.paraClasse(valorEsperado.class)));
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public static <T> WorkbookMatcher estaCom(T valorEsperado) {
+		return new WorkbookMatcher(new CellMatcher(valorEsperado, TiposBasicosExtrator.paraClasse(valorEsperado.getClass())));
 	}
 	
 }

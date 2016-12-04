@@ -1,5 +1,7 @@
 package org.apache.poi.matchers;
 
+import java.util.Date;
+
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -51,8 +53,26 @@ public class WorkbookBuilder {
 		}
 		return row;
 	}
+	
+	public WorkbookBuilder comValorNaLinhaColuna(String conteudo, int linha, int coluna) {
+		Cell cell = getOrCreateCell(coluna, linha);
+		cell.setCellValue(conteudo);
+		return this;
+	}
 
-	public WorkbookBuilder comValorNaLinhaColuna(Object conteudo, int linha, int coluna) {
+	public WorkbookBuilder comValorNaLinhaColuna(Boolean conteudo, int linha, int coluna) {
+		Cell cell = getOrCreateCell(coluna, linha);
+		cell.setCellValue(conteudo);
+		return this;
+	}
+	
+	public WorkbookBuilder comValorNaLinhaColuna(Number conteudo, int linha, int coluna) {
+		Cell cell = getOrCreateCell(coluna, linha);
+		cell.setCellValue(conteudo.doubleValue());
+		return this;
+	}
+	
+	public WorkbookBuilder comValorNaLinhaColuna(Date conteudo, int linha, int coluna) {
 		Cell cell = getOrCreateCell(coluna, linha);
 		cell.setCellValue(conteudo);
 		return this;
