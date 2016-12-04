@@ -1,8 +1,8 @@
-package org.poimatchers;
+package com.github.elizeuborges.poimatchers;
 
 import java.util.regex.Pattern;
 
-public final class ResolvedorDeCoordenada {
+final class ResolvedorDeCoordenada {
 
 	private static final int NUM_LETRAS_ALFABETO = 26;
 
@@ -14,12 +14,12 @@ public final class ResolvedorDeCoordenada {
 
 	private ResolvedorDeCoordenada(){}
 	
-	public static Coordenada resolver(String celula) {
-		if (!iniciandoComLetraSeguidaDeNumero.matcher(celula).find()) {
+	public static Coordenada resolver(String coordenada) {
+		if (!iniciandoComLetraSeguidaDeNumero.matcher(coordenada).find()) {
 			throw new IllegalArgumentException("Formato de célula inválido. "
 					+ "A célula deve-se iniciar com a(s) letra(s) referente a coluna seguida do número da linha");
 		}
-		String letras = celula.toUpperCase();
+		String letras = coordenada.toUpperCase();
 		int coluna = 0, linha = 0, iletras = 0, inumeros = 0;
 		for (int i = 0; i < letras.length(); i++) {
 			char letra = letras.charAt(i);

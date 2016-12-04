@@ -1,13 +1,14 @@
-package org.poimatchers;
+package com.github.elizeuborges.poimatchers;
 
-import static org.poimatchers.CoordenadaMatcher.is;
+import static com.github.elizeuborges.poimatchers.CoordenadaMatcher.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import org.poimatchers.Coordenada;
-import org.poimatchers.ResolvedorDeCoordenada;
+
+import com.github.elizeuborges.poimatchers.Coordenada;
+import com.github.elizeuborges.poimatchers.ResolvedorDeCoordenada;
 
 public class ResolvedorDeCoordenadaTest {
 

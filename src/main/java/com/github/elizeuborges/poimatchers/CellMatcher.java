@@ -1,4 +1,4 @@
-package org.poimatchers;
+package com.github.elizeuborges.poimatchers;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.hamcrest.Description;
@@ -25,11 +25,11 @@ public class CellMatcher<T> extends TypeSafeMatcher<Cell> {
 	protected void describeMismatchSafely(Cell cell, Description mismatchDescription) {
 		mismatchDescription
 			.appendText(" uma celula com ")
-			.appendValue(extrator.extrairValor(cell));
+			.appendValue(extrator.extrairConteudo(cell));
 	}
 	
 	@Override
 	protected boolean matchesSafely(Cell cell) {
-		return esperado.equals(extrator.extrairValor(cell));
+		return esperado.equals(extrator.extrairConteudo(cell));
 	}
 }

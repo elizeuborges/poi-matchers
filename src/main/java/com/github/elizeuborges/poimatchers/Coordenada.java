@@ -1,6 +1,6 @@
-package org.poimatchers;
+package com.github.elizeuborges.poimatchers;
 
-public class Coordenada {
+class Coordenada {
 
 	private int linha;
 

@@ -1,4 +1,4 @@
-package org.poimatchers;
+package com.github.elizeuborges.poimatchers;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -7,8 +7,9 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeDiagnosingMatcher;
-import org.poimatchers.Coordenada;
-import org.poimatchers.ResolvedorDeCoordenada;
+
+import com.github.elizeuborges.poimatchers.Coordenada;
+import com.github.elizeuborges.poimatchers.ResolvedorDeCoordenada;
 
 public class WorkbookMatcher extends TypeSafeDiagnosingMatcher<Workbook> {
 
@@ -74,18 +75,60 @@ public class WorkbookMatcher extends TypeSafeDiagnosingMatcher<Workbook> {
 		return cell;
 	}
 
-	public WorkbookMatcher naCelula(String celula) {
-		coordenada = ResolvedorDeCoordenada.resolver(celula);
+	/**
+	 * @param coordenada Coordenada XY da célula que se deseja 
+	 * realizar a asserção.<br>
+	 * <b>EX:</b>
+	 * <br><br>
+	 * <i>
+	 * Verificando se na primeira coluna da primeira linha está preenchida com a String 
+	 * "Um valor qualquer"</i>
+	 * <code>
+	 * <pre>
+	 * Workbook workbook = ...
+	 * 
+	 * assertThat(workbook, estaCom("Um valor qualquer").naCelula("A1"));
+	 * </pre>
+	 * </code>
+	 * @return this WorkbookMatcher
+	 */
+	public WorkbookMatcher naCelula(String coordenada) {
+		this.coordenada = ResolvedorDeCoordenada.resolver(coordenada);
 		return this;
 	}
 	
+	/**
+	 * Define o valor que se espera obter da célula e a estratégia de extrair o conteudo da {@link Cell}
+	 * 
+	 * @param esperado valor que se espera obter
+	 * @param extrator estratégia de extrair o conteúdo da {@link Cell}
+	 * @return this WorkbookMatcher
+	 */
+	public static <T> WorkbookMatcher estaCom(T esperado, ExtratorDeConteudoDaCelula<T> extrator) {
+		return new WorkbookMatcher((CellMatcher<T>) new CellMatcher<T>(esperado, extrator));
+	}
+
+	/**
+	 * Define o {@link Matcher} que verificará a célula especificada se a mesma não for null
+	 * 
+	 * @param cellMatcher
+	 * @return this WorkbookMatcher
+	 */
 	public static WorkbookMatcher estaCom(Matcher<Cell> cellMatcher) {
 		return new WorkbookMatcher(cellMatcher);
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	/**
+	 * Define valor que se espera obter da célula
+	 * 
+	 * @param valorEsperado
+	 * @return this WorkbookMatcher
+	 * @see TiposBasicosExtrator
+	 * @throws IllegalArgumentException  conforme especificado em {@link TiposBasicosExtrator#paraClasse(Class)}
+	 */
+	@SuppressWarnings({ "unchecked" })
 	public static <T> WorkbookMatcher estaCom(T valorEsperado) {
-		return new WorkbookMatcher(new CellMatcher(valorEsperado, TiposBasicosExtrator.paraClasse(valorEsperado.getClass())));
+		return estaCom(valorEsperado, TiposBasicosExtrator.paraClasse((Class<T>)valorEsperado.getClass()));
 	}
 	
 }

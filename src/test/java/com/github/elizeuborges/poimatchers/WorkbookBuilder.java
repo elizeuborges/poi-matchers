@@ -1,4 +1,4 @@
-package org.poimatchers;
+package com.github.elizeuborges.poimatchers;
 
 import java.util.Date;
 
