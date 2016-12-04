@@ -1,8 +1,9 @@
-package org.apache.poi.matchers;
+package org.poimatchers;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.poimatchers.Coordenada;
 
 public class CoordenadaMatcher extends TypeSafeMatcher<Coordenada> {
 	

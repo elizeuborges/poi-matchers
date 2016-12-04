@@ -1,4 +1,4 @@
-package org.apache.poi.matchers;
+package org.poimatchers;
 
 import java.math.BigDecimal;
 import java.util.Date;

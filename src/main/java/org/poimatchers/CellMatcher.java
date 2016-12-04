@@ -1,4 +1,4 @@
-package org.apache.poi.matchers;
+package org.poimatchers;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.hamcrest.Description;

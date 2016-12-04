@@ -1,11 +1,13 @@
-package org.apache.poi.matchers;
+package org.poimatchers;
 
-import static org.apache.poi.matchers.CoordenadaMatcher.is;
+import static org.poimatchers.CoordenadaMatcher.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.poimatchers.Coordenada;
+import org.poimatchers.ResolvedorDeCoordenada;
 
 public class ResolvedorDeCoordenadaTest {
 

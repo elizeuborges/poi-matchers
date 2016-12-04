@@ -1,4 +1,4 @@
-package org.apache.poi.matchers;
+package org.poimatchers;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
@@ -12,6 +12,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.poimatchers.WorkbookMatcher;
 
 public class WorkbookMatcherTest {
 	

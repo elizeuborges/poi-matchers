@@ -1,7 +1,5 @@
-package org.apache.poi.matchers;
+package org.poimatchers;
 
-import org.apache.poi.matchers.Coordenada;
-import org.apache.poi.matchers.ResolvedorDeCoordenada;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -9,6 +7,8 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeDiagnosingMatcher;
+import org.poimatchers.Coordenada;
+import org.poimatchers.ResolvedorDeCoordenada;
 
 public class WorkbookMatcher extends TypeSafeDiagnosingMatcher<Workbook> {
 
