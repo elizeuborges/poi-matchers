@@ -5,11 +5,11 @@
 	<artifactId>poi-matchers</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>poi-matchers</name>
-	
+
 	<description>Hamcrest matchers para planilhas criadas com Apache POI</description>
-	
+
 	<inceptionYear>2016</inceptionYear>
-	
+
 	<developers>
 		<developer>
 			<id>eborges</id>
@@ -116,6 +116,27 @@
 					<additionalparam>-Xdoclint:none</additionalparam>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.7.5.201505241946</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 </project>

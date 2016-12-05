@@ -20,7 +20,10 @@ final class ResolvedorDeCoordenada {
 					+ "A célula deve-se iniciar com a(s) letra(s) referente a coluna seguida do número da linha");
 		}
 		String letras = coordenada.toUpperCase();
-		int coluna = 0, linha = 0, iletras = 0, inumeros = 0;
+		int coluna = 0; 
+		int	linha = 0;
+		int	iletras = 0;
+		int	inumeros = 0;
 		for (int i = 0; i < letras.length(); i++) {
 			char letra = letras.charAt(i);
 			if (isLetra(letra)) {

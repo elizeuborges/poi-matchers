@@ -26,7 +26,8 @@ public enum TiposBasicosExtrator implements ExtratorDeConteudoDaCelula {
 	 * @see Cell#getNumericCellValue()
 	 */
 	INTEGER(Integer.class){
-		public Object extrairConteudo(Cell cell) {
+		@Override
+		public Integer extrairConteudo(Cell cell) {
 			Double valor = cell.getNumericCellValue();
 			return valor.intValue();
 		}
@@ -42,7 +43,8 @@ public enum TiposBasicosExtrator implements ExtratorDeConteudoDaCelula {
 	 * @see Cell#getNumericCellValue()
 	 */
 	FLOAT(Float.class){
-		public Object extrairConteudo(Cell cell) {
+		@Override
+		public Float extrairConteudo(Cell cell) {
 			Double valor = cell.getNumericCellValue();
 			return valor.floatValue();
 		}
@@ -58,7 +60,8 @@ public enum TiposBasicosExtrator implements ExtratorDeConteudoDaCelula {
 	 * @see Cell#getNumericCellValue()
 	 */
 	DOUBLE(Double.class){
-		public Object extrairConteudo(Cell cell) {
+		@Override
+		public Double extrairConteudo(Cell cell) {
 			return cell.getNumericCellValue();
 		}
 	},
@@ -73,8 +76,10 @@ public enum TiposBasicosExtrator implements ExtratorDeConteudoDaCelula {
 	 * @see Cell#getNumericCellValue()
 	 */
 	LONG(Long.class){
-		public Object extrairConteudo(Cell cell) {
-			return Double.valueOf(cell.getNumericCellValue()).longValue();
+		@Override
+		public Long extrairConteudo(Cell cell) {
+			Double valor = cell.getNumericCellValue();
+			return valor.longValue();
 		}
 	},
 	/**
@@ -88,7 +93,8 @@ public enum TiposBasicosExtrator implements ExtratorDeConteudoDaCelula {
 	 * @see Cell#getBooleanCellValue()
 	 */
 	BOOLEAN(Boolean.class){
-		public Object extrairConteudo(Cell cell) {
+		@Override
+		public Boolean extrairConteudo(Cell cell) {
 			return cell.getBooleanCellValue();
 		}
 	},
@@ -103,7 +109,8 @@ public enum TiposBasicosExtrator implements ExtratorDeConteudoDaCelula {
 	 * @see Cell#getNumericCellValue()
 	 */
 	BIG_DECIMAL(BigDecimal.class){
-		public Object extrairConteudo(Cell cell) {
+		@Override
+		public BigDecimal extrairConteudo(Cell cell) {
 			return BigDecimal.valueOf(cell.getNumericCellValue());
 		}
 	},
@@ -118,7 +125,8 @@ public enum TiposBasicosExtrator implements ExtratorDeConteudoDaCelula {
 	 * @see Cell#getDateCellValue()
 	 */
 	DATE(Date.class){
-		public Object extrairConteudo(Cell cell) {
+		@Override
+		public Date extrairConteudo(Cell cell) {
 			return cell.getDateCellValue();
 		}
 	},
@@ -127,7 +135,8 @@ public enum TiposBasicosExtrator implements ExtratorDeConteudoDaCelula {
 	 * @see Cell#getStringCellValue()
 	 */
 	STRING(String.class){
-		public Object extrairConteudo(Cell cell) {
+		@Override
+		public String extrairConteudo(Cell cell) {
 			return cell.getStringCellValue();
 		}
 	}
