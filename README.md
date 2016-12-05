@@ -6,6 +6,26 @@
 
 > POI Matchers é uma biblioteca com Hamcrest Matcher para asserções em Workbook geradas com [Apache POI](https://poi.apache.org/)
 
+---
+### Importante 
+
+> Caso a release ainda não tenha sido promovida para o repositório central, use os seguintes:
+
+```xml
+<distributionManagement>
+	<snapshotRepository>
+		<id>ossrh</id>
+		<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+	</snapshotRepository>
+	<repository>
+		<id>ossrh</id>
+		<name>Nexus Release Repository</name>
+		<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+	</repository>
+</distributionManagement>
+```
+---
+
 ## Quick Start
 
 - Adicione ao seu projeto Maven a dependência para a POI Matchers (Verifique no [Repositório Maven](https://mvnrepository.com/artifact/org.github.elizeuborges/poi-matchers) a ultima versão):
