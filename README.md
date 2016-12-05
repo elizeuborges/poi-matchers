@@ -9,7 +9,7 @@
 ---
 ### Importante 
 
-> Caso a release ainda não tenha sido promovida para o repositório central, use os seguintes:
+> Caso a release ainda não tenha sido promovida para o repositório central, e você não aguenta esperar, pode usar os seguintes repositórios:
 
 ```xml
 <distributionManagement>
