@@ -8,9 +8,12 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeDiagnosingMatcher;
 
-import com.github.elizeuborges.poimatchers.Coordenada;
-import com.github.elizeuborges.poimatchers.ResolvedorDeCoordenada;
-
+/**
+ * Matcher principal para verificações em {@link Workbook}
+ * 
+ * @author Elizeu
+ *
+ */
 public class WorkbookMatcher extends TypeSafeDiagnosingMatcher<Workbook> {
 
 	private Coordenada coordenada;
@@ -32,6 +35,9 @@ public class WorkbookMatcher extends TypeSafeDiagnosingMatcher<Workbook> {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.hamcrest.SelfDescribing#describeTo(org.hamcrest.Description)
+	 */
 	@Override
 	public void describeTo(Description description) {
 		description.appendDescriptionOf(cellMatcher)
@@ -76,10 +82,10 @@ public class WorkbookMatcher extends TypeSafeDiagnosingMatcher<Workbook> {
 	}
 
 	/**
-	 * @param coordenada Coordenada XY da célula que se deseja 
-	 * realizar a asserção.<br>
+	 * Define a célula que será realizada a asserção.
+	 * <br>
 	 * <b>EX:</b>
-	 * <br><br>
+	 * <br>
 	 * <i>
 	 * Verificando se na primeira coluna da primeira linha está preenchida com a String 
 	 * "Um valor qualquer"</i>
@@ -90,6 +96,9 @@ public class WorkbookMatcher extends TypeSafeDiagnosingMatcher<Workbook> {
 	 * assertThat(workbook, estaCom("Um valor qualquer").naCelula("A1"));
 	 * </pre>
 	 * </code>
+	 * 
+	 * @param coordenada Coordenada XY da célula que se deseja 
+	 * realizar a asserção.
 	 * @return this WorkbookMatcher
 	 */
 	public WorkbookMatcher naCelula(String coordenada) {
