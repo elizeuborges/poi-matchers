@@ -8,13 +8,13 @@
 
 ## Quick Start
 
-- Adicione ao seu projeto Maven a dependência para a POI Matchers (Verifique no [Repositório Maven](https://mvnrepository.com/artifact/org.github.elizeuborges/poi-matchers) a ultima versão):
+- Adicione ao seu projeto Maven a dependência para a POI Matchers (Verifique no [Repositório Maven](https://mvnrepository.com/artifact/com.github.elizeuborges/poi-matchers) a ultima versão):
 
 ```xml
 <dependency>
-  <groupId>org.github.elizeuborges</groupId>
+  <groupId>com.github.elizeuborges</groupId>
   <artifactId>poi-matchers</artifactId>
-  <version>1.0.0.beta</version>
+  <version>1.0.0-beta</version>
   <scope>test</scope>
 </dependency>
 ```
