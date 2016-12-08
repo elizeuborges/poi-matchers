@@ -5,7 +5,7 @@ import org.apache.poi.ss.usermodel.Cell;
 /**
  * Define uma estratégia de extração do conteúdo de uma {@link Cell}
  * 
- * @author Elizeu
+ * @author Elizeu Borges
  *
  * @param <T> tipo de dado a ser extraido ca céelula
  */

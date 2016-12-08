@@ -11,7 +11,7 @@ import org.hamcrest.TypeSafeDiagnosingMatcher;
 /**
  * Matcher principal para verificações em {@link Workbook}
  * 
- * @author Elizeu
+ * @author Elizeu Borges
  *
  */
 public class WorkbookMatcher extends TypeSafeDiagnosingMatcher<Workbook> {
@@ -35,7 +35,10 @@ public class WorkbookMatcher extends TypeSafeDiagnosingMatcher<Workbook> {
 		}
 	}
 	
-	/* (non-Javadoc)
+	/**
+	 * Descreve o {@link Matcher} usado para validar a {@link Cell},
+	 * o indíce da {@link Sheet}, da {@link Row} e da {@link Cell} que se realizou a asserção
+	 * 
 	 * @see org.hamcrest.SelfDescribing#describeTo(org.hamcrest.Description)
 	 */
 	@Override
@@ -50,6 +53,15 @@ public class WorkbookMatcher extends TypeSafeDiagnosingMatcher<Workbook> {
 		;
 	}
 
+	
+	/**
+	 * Verifica se existe uma {@link Sheet} para o indíce informado, e se 
+	 * a {@link Cell} da coordenada informada tiver sido criada, delega 
+	 * para o {@link Matcher} da {@link Cell} realizar a validação 
+	 * 
+	 * 
+	 * @see org.hamcrest.TypeSafeDiagnosingMatcher#matchesSafely(java.lang.Object, org.hamcrest.Description)
+	 */
 	@Override
 	protected boolean matchesSafely(Workbook workbook, Description mismatchDescription) {
 		garantaQueOMatcherEstaEmUmEstadoIntegro();
@@ -89,13 +101,11 @@ public class WorkbookMatcher extends TypeSafeDiagnosingMatcher<Workbook> {
 	 * <i>
 	 * Verificando se na primeira coluna da primeira linha está preenchida com a String 
 	 * "Um valor qualquer"</i>
-	 * <code>
 	 * <pre>
 	 * Workbook workbook = ...
 	 * 
 	 * assertThat(workbook, estaCom("Um valor qualquer").naCelula("A1"));
 	 * </pre>
-	 * </code>
 	 * 
 	 * @param coordenada Coordenada XY da célula que se deseja 
 	 * realizar a asserção.
@@ -111,6 +121,7 @@ public class WorkbookMatcher extends TypeSafeDiagnosingMatcher<Workbook> {
 	 * 
 	 * @param esperado valor que se espera obter
 	 * @param extrator estratégia de extrair o conteúdo da {@link Cell}
+	 * @param <T> tipo estatico que se espera obter da celula
 	 * @return this WorkbookMatcher
 	 */
 	public static <T> WorkbookMatcher estaCom(T esperado, ExtratorDeConteudoDaCelula<T> extrator) {
@@ -120,7 +131,7 @@ public class WorkbookMatcher extends TypeSafeDiagnosingMatcher<Workbook> {
 	/**
 	 * Define o {@link Matcher} que verificará a célula especificada se a mesma não for null
 	 * 
-	 * @param cellMatcher
+	 * @param cellMatcher Matcher para realizar a asserção 
 	 * @return this WorkbookMatcher
 	 */
 	public static WorkbookMatcher estaCom(Matcher<Cell> cellMatcher) {
@@ -130,7 +141,8 @@ public class WorkbookMatcher extends TypeSafeDiagnosingMatcher<Workbook> {
 	/**
 	 * Define valor que se espera obter da célula
 	 * 
-	 * @param valorEsperado
+	 * @param valorEsperado obter da celula
+	 * @param <T> tipo estático do valor esperado
 	 * @return this WorkbookMatcher
 	 * @see TiposBasicosExtrator
 	 * @throws IllegalArgumentException  conforme especificado em {@link TiposBasicosExtrator#paraClasse(Class)}

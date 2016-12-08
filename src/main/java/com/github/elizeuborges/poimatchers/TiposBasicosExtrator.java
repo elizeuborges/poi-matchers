@@ -18,11 +18,9 @@ public enum TiposBasicosExtrator implements ExtratorDeConteudoDaCelula {
 	/**
 	 * Define um {@link ExtratorDeConteudoDaCelula} retorna o equivalente à:
 	 * <br>
-	 * <code>
 	 * <pre>
 	 * cell.getNumericCellValue().intValue()
 	 * </pre>
-	 * </code>
 	 * @see Cell#getNumericCellValue()
 	 */
 	INTEGER(Integer.class){
@@ -35,11 +33,9 @@ public enum TiposBasicosExtrator implements ExtratorDeConteudoDaCelula {
 	/**
 	 * Define um {@link ExtratorDeConteudoDaCelula} retorna o equivalente à:
 	 * <br>
-	 * <code>
 	 * <pre>
 	 * cell.getNumericCellValue().floatValue()
 	 * </pre>
-	 * </code>
 	 * @see Cell#getNumericCellValue()
 	 */
 	FLOAT(Float.class){
@@ -52,11 +48,9 @@ public enum TiposBasicosExtrator implements ExtratorDeConteudoDaCelula {
 	/**
 	 * Define um {@link ExtratorDeConteudoDaCelula} retorna o equivalente à:
 	 * <br>
-	 * <code>
 	 * <pre>
 	 * cell.getNumericCellValue()
 	 * </pre>
-	 * </code>
 	 * @see Cell#getNumericCellValue()
 	 */
 	DOUBLE(Double.class){
@@ -68,11 +62,9 @@ public enum TiposBasicosExtrator implements ExtratorDeConteudoDaCelula {
 	/**
 	 * Define um {@link ExtratorDeConteudoDaCelula} retorna o equivalente à:
 	 * <br>
-	 * <code>
 	 * <pre>
 	 * Double.valueOf(cell.getNumericCellValue()).longValue()
 	 * </pre>
-	 * </code>
 	 * @see Cell#getNumericCellValue()
 	 */
 	LONG(Long.class){
@@ -85,11 +77,9 @@ public enum TiposBasicosExtrator implements ExtratorDeConteudoDaCelula {
 	/**
 	 * Define um {@link ExtratorDeConteudoDaCelula} retorna o equivalente à:
 	 * <br>
-	 * <code>
 	 * <pre>
 	 * cell.getBooleanCellValue()
 	 * </pre>
-	 * </code>
 	 * @see Cell#getBooleanCellValue()
 	 */
 	BOOLEAN(Boolean.class){
@@ -101,11 +91,9 @@ public enum TiposBasicosExtrator implements ExtratorDeConteudoDaCelula {
 	/**
 	 * Define um {@link ExtratorDeConteudoDaCelula} retorna o equivalente à:
 	 * <br>
-	 * <code>
 	 * <pre>
 	 * BigDecimal.valueOf(cell.getNumericCellValue());
 	 * </pre>
-	 * </code>
 	 * @see Cell#getNumericCellValue()
 	 */
 	BIG_DECIMAL(BigDecimal.class){
@@ -117,11 +105,9 @@ public enum TiposBasicosExtrator implements ExtratorDeConteudoDaCelula {
 	/**
 	 * Define um {@link ExtratorDeConteudoDaCelula} retorna o equivalente à:
 	 * <br>
-	 * <code>
 	 * <pre>
 	 * cell.getDateCellValue()
 	 * </pre>
-	 * </code>
 	 * @see Cell#getDateCellValue()
 	 */
 	DATE(Date.class){
@@ -152,6 +138,7 @@ public enum TiposBasicosExtrator implements ExtratorDeConteudoDaCelula {
 	 * Retorna uma estratégia de extração do conteúdo da celula para tipo informado 
 	 * 
 	 * @param clazz classe do tipo de dado inserido na {@link Cell}
+	 * @param <T> tipo estático da classe que se deseja obter um extrator
 	 * @return instancia de um {@link ExtratorDeConteudoDaCelula} para o tipo de dado fornecido
 	 * @throws IllegalArgumentException se não possuir uma definição para a classe informada em {@link TiposBasicosExtrator}
 	 */
